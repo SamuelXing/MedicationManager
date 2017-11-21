@@ -82,7 +82,7 @@ web_1  | Quit the server with CONTROL-C.
 
 -	GitHub is designed around a particular collaboration workflow, centered on Pull Requests. This flow works whether you’re collaborating with a tightly-knit team in a single shared repository, or a globally-distributed company or network of strangers contributing to a project through dozens of forks. It is centered on the Topic Branches workflow covered in Git Branching.
 
--	**Here’s how it generally works:** **[Code Example(IMPORTANT)](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)**
+-	**Here’s how it generally works:** **[Code Example(IMPORTANT)](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)**
 
 	1. Fork the project
 
