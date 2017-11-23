@@ -98,11 +98,18 @@ web_1  | Quit the server with CONTROL-C.
 
 	7. The project owner merges or closes the Pull Request.
 
+
 ## TODO
 
 - [ ] UserModule (Working on)
 - [ ] DrugModule
 - [ ] Search(Spider?)
 - [ ] Front-End(html, css, js) (Wroking on)
+
+## Notes
+
+**superuser**
+
+username: tiger, password: tiger
 	
 	

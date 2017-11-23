@@ -1,0 +1,161 @@
+body
+{
+    position: relative;
+    padding-top: 50px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.navbar-header a.navbar-header {
+    color: white;
+    font-size: 1.4em;
+}
+
+div.container {
+    width: 97%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.navbar-inverse .navbar-nav > li >a {
+    color: #CCC;
+}
+
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+    border-radius: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.navbar {
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+
+.bs-docs-nav {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .15);
+    background-color: rgb(86, 61, 124);
+    border-color: rgb(70, 50, 101);
+    box-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+
+#inventory-input {
+    width: 250px;
+}
+
+#cmd-input {
+    width: 250px;
+}
+
+main {
+    padding-top: 50px;
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1em;
+    color: #CCC;
+}
+
+.table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: 1px solid #AAA;
+}
+
+.table > tbody > tr > td > a {
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    text-decoration: none;
+}
+
+.table > tbody > tr > td > a:hover {
+    background-color: white;
+    text-decoration: none;
+    color: rgb(86, 61, 124);
+}
+
+th.detail-command, .home-shell-command {
+    width: 48%;
+    word-break: break-all;
+}
+
+.th-id {
+    width: 30px;
+}
+
+pre {
+    background-color: inherit;
+    color: white;
+    border: none;
+}
+
+.green-text {
+    color: #9F9;
+}
+
+.red-text {
+    color: #F55;
+}
+
+.blue-text {
+    color: #99F;
+}
+
+.white-text {
+    color: white;
+}
+
+table tbody tr td a.anchor {
+    color: white;
+    font-weight: bold;
+    border: none;
+    text-decoration: none;
+}
+
+table tbody tr td a.anchor:hover {
+    color: white;
+    background-color: inherit;
+}
+
+.home-actions {
+    width: 180px;
+    text-align: right;
+}
+
+.tr-yes {/
+    opacity: 0.8;
+}
+
+.tr-yes:hover {
+    opacity: 1;
+}
+
+body {
+    background-color: rgb(86, 61, 124);
+}
+
+.in-center{
+    padding-top:50px;
+
+}
+
+

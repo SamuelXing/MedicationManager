@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+{% block title%} Settings {%endblock%}
+{% load i18n %}
+{% block content %}
+    <form class="form-horizontal panel-body" method="post" action="{% url 'user:settings' %}">
+    <div class="in-center">
+    <div class="panel panel-default col-md-6 col-md-offset-3">
+    <div class="panel-heading">
+        <h3 class="panel-title">Email</h3>
+    </div>
+        {% csrf_token %}
+        <div class="form-group ">
+            <label class="col-sm-2 control-label" for="email">Email</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="email" name="email" type="email" value="{{request.user.email}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-default">
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="in-center">
+    <div class="panel panel-default col-md-6 col-md-offset-3">
+    <div class="panel-heading">
+        <h3 class="panel-title">Password</h3>
+    </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label" for="oldPass">Old Password</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="oldPass" name="oldPass" type="password">
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label" for="newPass">New Password</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="newPass" name="newPass" type="password">
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label" for="confirmPass">Confirm</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="confirmPass" name="confirmPass" type="password">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-default">
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+    </form>
+{% endblock %}

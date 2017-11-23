@@ -5,9 +5,8 @@ from .models import NormalUser
 # Register your models here.
 
 class NormalUserAdmin(admin.ModelAdmin):
-    fields = ('user', 'nickname', 'created_at')
+    fields = ('user', 'nickname')
     search_fields = ('nickname',)
-    list_display = ('id', 'nickname', 'created_at')
+    list_display = ('nickname', 'created_at')
 
 
-admin.site.register(NormalUser, NormalUserAdmin)
