@@ -38,6 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'UserModule',
+    'drugModule',
+    'planModule',
+
 )
 
 MIDDLEWARE_CLASSES = (

@@ -101,8 +101,9 @@ web_1  | Quit the server with CONTROL-C.
 
 ## TODO
 
-- [ ] UserModule (Working on)
-- [ ] DrugModule
+- [x] UserModule (Working on)
+- [ ] DrugModule (done the framework)
+- [ ] PlanModule (done the framework)
 - [ ] Search(Spider?)
 - [ ] Front-End(html, css, js) (Wroking on)
 
@@ -111,5 +112,14 @@ web_1  | Quit the server with CONTROL-C.
 **superuser**
 
 username: tiger, password: tiger
-	
+
+**docker commands to migrate DB**
+
+```
+$ docker ps  # check the running container
+$ docker exec -t -i <container_id> bash  # entering the container env
+$ python manage.py makemigrations
+$ python manage.py migrate
+
+```
 	
