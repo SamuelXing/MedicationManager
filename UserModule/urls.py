@@ -9,3 +9,4 @@ urlpatterns = [
     url(r'^signout/$', views.signout, name = 'signout'),
     url(r'^settings/$', views.settings, name= 'settings'),
 ]
+

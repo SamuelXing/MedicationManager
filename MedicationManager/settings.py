@@ -114,4 +114,6 @@ STATICFILES_DIR = (
 
 STATIC_URL = '/static/'
 
+LOGIN_URL = '/user/signin'
+
 AUTH_PROFILE_MODULE = 'UserModule.NormalUser'

@@ -99,6 +99,7 @@ def signout(request):
     logout(request)
     return HttpResponse("Signout succeed")
 
+@login_required
 def settings(request):
     if request.method == 'GET':
         return render_to_response('User/settings.html', {'request': request},
