@@ -13,8 +13,10 @@
             Medication Manager
             {% endblock %}
         </title>
-        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'UserModule/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'UserModule/css/style.css' %}" rel="stylesheet">
+        {% block style %}
+        {% endblock %}
     </head>
     <body>
         <header>
@@ -32,7 +34,7 @@
                 </div>
                 <div class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav">
-                    {% block style%}
+                    {% block tab%}
                     <li><a href="#">Make a plan</a></li>
                     <li><a href="#">Search drugs</a></li>
                     <li><a href="#">TBA</a></li>
@@ -50,6 +52,7 @@
                             <a href="{% url 'user:userInfo' request.user.id %}" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'user:userInfo' request.user.id %}">Profile</a></li>
+                                <li><a href="{% url 'plan:plan_lists'%}">My Plans</a></li>
                                 <li><a href="{% url 'user:settings'%}">Settings</a></li>
                             </ul>
                         </li>
@@ -68,8 +71,10 @@
             {% endblock %}
         </main>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+        <script src="{% static 'UserModule/js/jquery-2.1.1.min.js' %}"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'UserModule/js/bootstrap.min.js' %}"></script>
+        {% block js %}
+        {% endblock %}
     </body>
 </html>

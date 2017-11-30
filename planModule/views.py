@@ -6,9 +6,11 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from .planForm import PlanForm
+from django.contrib import messages
 
 
 # Create your views here.
+# TODO: response messages
 @login_required
 def addAPlan(request):
     if request.method == 'GET':
@@ -16,14 +18,22 @@ def addAPlan(request):
         form = PlanForm()
         return render(request, 'Plan/create.html', {'form': form, 'drugs': drugs})
     elif request.method == 'POST':
-        form = PlanForm(request.POST)
-        if form.is_valid():
-            newPlan = form.save(commit=False)
-            newPlan.user = request.user
-            newPlan.save()
-            return HttpResponseRedirect(reverse('plan:plan_lists'))
-        else:
-            return HttpResponseRedirect(reverse('plan:plan_create'))
+        name = request.POST.get('name')
+        user_id = request.user.id
+        drug = request.POST.get('drug')
+        frequencies = request.POST.get('frequencies')
+        dose = request.POST.get('dose')
+        startDate = request.POST.get('startDate')
+        endDate = request.POST.get('endDate')
+
+        if not User.objects.get(pk = user_id).exist():
+            messages.add_message(request, messages.WARNING, "username does not exist")
+            return HttpResponseRedirect(reverse('plam:plan_create'))
+
+
+        newPlan = Plan()
+        newPlan.name = name
+
 
 
 @login_required

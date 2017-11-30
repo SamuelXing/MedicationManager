@@ -8,4 +8,4 @@ class PlanAdmin(admin.ModelAdmin):
 
 
 # might be redundant to add this model to admin site
-# admin.site.register(Plan, PlanAdmin)
+admin.site.register(Plan, PlanAdmin)

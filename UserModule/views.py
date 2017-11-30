@@ -79,7 +79,6 @@ def signin(request):
     if request.method == 'GET':
         return render_to_response("User/signin.html", context_instance = RequestContext(request))
     elif request.method == 'POST':
-        print("HERE")
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username = username, password=password)

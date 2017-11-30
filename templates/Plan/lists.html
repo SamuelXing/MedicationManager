@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% block title%} My Plans {%endblock%}
+{% load i18n %}
+{% block content %}
+ <div class="table-responsive in-center" >
+     <table class="table table-hover table-striped">
+        {% for plan in plans %}
+         <tr>
+             <td>
+                   name
+             </td>
+             <td>
+                 options
+             </td>
+         </tr>
+        {% endfor %}
+
+
+     </table>
+        <!--共有 {{ counter.topics}} 篇帖子-->
+ </div>
+{% endblock %}
