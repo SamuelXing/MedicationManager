@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^user/', include('UserModule.urls', namespace='user')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^plan/', include('planModule.urls', namespace='plan')),
+    url(r'^drug/', include('drugModule.urls',namespace='drug')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

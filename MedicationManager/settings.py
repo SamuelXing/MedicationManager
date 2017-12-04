@@ -25,7 +25,7 @@ SECRET_KEY = 'sj-fvg_pcv(urglcth71@s2n6&o7$=h^zcnlf(^bn=9u7*yz!2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [""]
 
 
 # Application definition
