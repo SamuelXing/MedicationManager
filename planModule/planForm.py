@@ -5,5 +5,5 @@ class PlanForm(ModelForm):
     class Meta:
         model = Plan
         fields = '__all__'
-        exclude = ['user']
+        #exclude = ['user']
 

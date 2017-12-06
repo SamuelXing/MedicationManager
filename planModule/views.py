@@ -26,15 +26,26 @@ def addAPlan(request):
         startDate = request.POST.get('startDate')
         endDate = request.POST.get('endDate')
 
-        if not User.objects.get(pk = user_id).exist():
+        if not User.objects.filter(pk = user_id).exists():
             messages.add_message(request, messages.WARNING, "username does not exist")
-            return HttpResponseRedirect(reverse('plam:plan_create'))
+            return HttpResponseRedirect(reverse('plan:plan_create'))
 
         user = User.objects.get(pk = user_id)
         drug = Drug.objects.get(name = drug_name)
 
         newPlan = Plan()
         newPlan.name = name
+        #newPlan.user=User.objects.get(id=user_id)
+        newPlan.drug=Drug.objects.get(name=drug)
+        newPlan.frequencies=frequencies
+        newPlan.does=dose
+        newPlan.startDate=startDate
+        newPlan.endDate=endDate
+        newPlan.save()
+        plans = get_list_or_404(Plan, user__pk = request.user.id)
+        return render_to_response('Plan/lists.html',locals(), context_instance = RequestContext(request))
+        
+  
 
 
 
@@ -72,6 +83,7 @@ def detail(request, plan_id):
 @login_required
 def listPlans(request):
     if request.method == 'GET':
-        plans = get_list_or_404(Plan, user__pk = request.user.id)
+        plans = get_list_or_404(Plan)
         return render_to_response('Plan/lists.html', locals(), context_instance = RequestContext(request))
 
+#, user__pk = request.user.id
