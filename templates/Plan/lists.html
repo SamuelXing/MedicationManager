@@ -30,9 +30,7 @@
                  Delete
 
              </td>
-             <td>
-                 Edit
-             </td>
+            
              </th>
 
          </tr>
@@ -65,13 +63,7 @@
             </form>
             </td>
 
-            <td>
-             <form action="/plan/{{plan.id}}/edit/" method="post" >
-             {% csrf_token %}
-                 <input type="hidden" name="plan_id" value="{{plan.id}}"/>
-                 <input type="submit" value="Edit plan" />
-            </form> 
-            </td>
+           
          </tr>
         {% endfor %}
      </table>

@@ -51,17 +51,28 @@ def addAPlan(request):
 def editAPlan(request, plan_id):
     if request.method == 'GET':
         plan = get_object_or_404(Plan, pk = plan_id)
-        form = PlanForm(instance=plan)
-        return render(request, 'Plan/edit.html', {'form': form})
+        drugs=Drug.objects.all()
+        form = PlanForm()
+        return render_to_response('Plan/edit.html', locals(), context_instance = RequestContext(request))
+
     elif request.method == 'POST':
-        form = PlanForm(request.POST)
+        instance=get_object_or_404(Plan,id=plan_id)
+        form = PlanForm(request.POST or None,instance=instance)
         if form.is_valid():
             newPlan = form.save(commit=False)
             newPlan.user = request.user
+            drug_name = request.POST.get('drug')
+            drug = Drug.objects.get(name = drug_name)
+            newPlan.drug=Drug.objects.get(name=drug)
+            newPlan.frequencies=request.frequencies
+            newPlan.does=request.dose
+            newPlan.startDate=request.startDate
+            newPlan.endDate=request.endDate
             newPlan.save()
-            return HttpResponseRedirect(reverse('plan:plan_detail', args=(newPlan.id), ))
+            plans = get_list_or_404(Plan, user__pk = request.user.id)
+            return render_to_response('Plan/lists.html',locals(), context_instance = RequestContext(request))
         else:
-            return HttpResponseRedirect(reverse('plan:plan_edit'))
+            return HttpResponseRedirect(reverse('plan:plan_edit', args=(plan_id,)))
 
 
 @login_required
