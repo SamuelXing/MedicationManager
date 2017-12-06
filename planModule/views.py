@@ -59,7 +59,7 @@ def editAPlan(request, plan_id):
             newPlan = form.save(commit=False)
             newPlan.user = request.user
             newPlan.save()
-            return HttpResponseRedirect(reverse('plan:plan_detail', args=(newPlan.id), ))
+            return HttpResponseRedirect(reverse('plan:plan_detail', args=(newPlan.id) ))
         else:
             return HttpResponseRedirect(reverse('plan:plan_edit'))
 
