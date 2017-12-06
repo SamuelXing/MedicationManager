@@ -2,32 +2,33 @@
 {% block title%} My Plans {%endblock%}
 {% load i18n %}
 {% block content %}
- <div class="in-center">
- <div class="panel panel-default col-md-6 col-md-offset-3" >
-     <table class="table table-hover table-striped">
+{% if plans %}
+ <div class="panel panel-default col-md-8 col-md-offset-2" >
+     <div class="table-responsive">
+         <table class="table" style="color:black; ">
         <tr>
-            <td>
+            <th>
                   name
-             </td>
-             <td>
+             </th>
+             <th>
                 drug
-             </td>
- 
-             <td>
+             </th>
+
+             <th>
                  frequencies
-             </td>
-              <td>
+             </th>
+              <th>
                  dose
-             </td>
-             <td>
+             </th>
+             <th>
                  startDate
-             </td>
-             <td>
+             </th>
+             <th>
                  endDate
-             </td>
-             <td>
+             </th>
+             <th>
                  Delete
-             </td>
+             </th>
          </tr>
 
         {% for plan in plans %}
@@ -55,14 +56,16 @@
              {% csrf_token %}
                  <input type="hidden" name="plan_id" value="{{plan.id}}"/>
                  <input type="submit" value="Delete plan" />
-            </form> 
+            </form>
             </td>
          </tr>
         {% endfor %}
-
-
      </table>
+     </div>
         <!--共有 {{ counter.topics}} 篇帖子-->
  </div>
- </div>
+{% else %}
+<p>You have no plans yet, click <a href="{% url 'plan:plan_create' %}">HERE</a> to create a new plan. :) </p>
+{% endif %}
+
 {% endblock %}

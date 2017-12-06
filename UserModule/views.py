@@ -16,8 +16,6 @@ from django.contrib.auth.views import password_reset, password_reset_confirm
 from .models import NormalUser
 from django.contrib.auth.models import User
 
-
-
 # Create your views here.
 alphanumeric = RegexValidator(r'^[0-9a-zA-Z\_]*$', 'Only alphanumeric characters and underscore are allowed.')
 emailCheck=RegexValidator(r'^([0-9a-zA-Z\_\.]*?)@([0-9a-zA-Z]*?)\.([0-9a-zA-Z]*?){3}$','Only formal email address is valid.')
@@ -27,15 +25,12 @@ def user_info(request, user_id):
     u = get_object_or_404(User, pk = user_id)
     if u.is_staff:
         return HttpResponse(u'Sorry, you have no permission to access admin user\'s info')
-    if u.id == request.user.id:
-        userInfo = NormalUser.objects.get(nickname = u.username)
-        userInfo.user = u
-        return render_to_response('User/user-info.html', {'request':request, 'userInfo': userInfo, 'user': u })
-    else:
-        userInfo = NormalUser.objects.get(nickname = u.username)
-        userInfo.user = u
-        return render_to_response('User/user-public-info.html', {'request': request, 'userInfo': userInfo, 'user': u })
 
+    userInfo = NormalUser.objects.get(nickname = u.username)
+    userInfo.user = u
+    return render_to_response('User/user-info.html', {'request':request, 'userInfo': userInfo, 'user': u })
+
+# TODO:redirect
 def signup(request):
     if request.method == 'GET':
         return render_to_response('User/signup.html', {}, context_instance = RequestContext(request))

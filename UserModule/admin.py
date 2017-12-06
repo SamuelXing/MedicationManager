@@ -9,4 +9,4 @@ class NormalUserAdmin(admin.ModelAdmin):
     search_fields = ('nickname',)
     list_display = ('nickname', 'created_at')
 
-
+admin.site.register(NormalUser, NormalUserAdmin)

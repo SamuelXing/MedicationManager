@@ -35,7 +35,7 @@ def addAPlan(request):
 
         newPlan = Plan()
         newPlan.name = name
-        #newPlan.user=User.objects.get(id=user_id)
+        newPlan.user=User.objects.get(id=user_id)
         newPlan.drug=Drug.objects.get(name=drug)
         newPlan.frequencies=frequencies
         newPlan.does=dose
@@ -44,8 +44,6 @@ def addAPlan(request):
         newPlan.save()
         plans = get_list_or_404(Plan, user__pk = request.user.id)
         return render_to_response('Plan/lists.html',locals(), context_instance = RequestContext(request))
-        
-  
 
 
 
@@ -83,7 +81,7 @@ def detail(request, plan_id):
 @login_required
 def listPlans(request):
     if request.method == 'GET':
-        plans = get_list_or_404(Plan)
+        userid = request.user.id
+        plans = Plan.objects.filter(user__pk = userid)
         return render_to_response('Plan/lists.html', locals(), context_instance = RequestContext(request))
 
-#, user__pk = request.user.id
