@@ -35,9 +35,8 @@
                 <div class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav">
                     {% block tab%}
-                    <li><a href="#">Make a plan</a></li>
+                    <li><a href="{% url 'plan:plan_create' %}">Make a plan</a></li>
                     <li><a href="#">Search drugs</a></li>
-                    <li><a href="#">TBA</a></li>
                     {% endblock %}
                     </ul>
                     <form action="/" method="POST" class="navbar-form navbar-left" role="search">

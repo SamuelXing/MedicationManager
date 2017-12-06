@@ -2,25 +2,25 @@
 {% block title%} My Drugs {%endblock%}
 {% load i18n %}
 {% block content %}
-<div class="in-center">
- <div class="panel panel-default col-md-6 col-md-offset-3" >
-     <table class="table table-hover table-striped">
+ <div class="panel panel-default col-md-8 col-md-offset-2" >
+     <div class = "table-responsive">
+              <table class="table" style="color:black;">
          <tr>
-            <td>
+            <th>
                   name
-             </td>
-             <td>
+             </th>
+             <th>
                 description
-             </td>
-             <td>
+             </th>
+             <th>
                  toxicity
-             </td>
-             <td>
+             </th>
+             <th>
                  interaction
-             </td>
-              <td>
+             </th>
+              <th>
                  Delete
-             </td>
+             </th>
          </tr>
 
         {% for drug in drugs %}
@@ -42,18 +42,11 @@
              {% csrf_token %}
                  <input type="hidden" name="drug_id" value="{{drug.id}}"/>
                  <input type="submit" value="Delete Item" />
-            </form>  
+            </form>
              </td>
-
-
-
-
          </tr>
         {% endfor %}
-
-
      </table>
-        
- </div>
+     </div>
  </div>
 {% endblock %}

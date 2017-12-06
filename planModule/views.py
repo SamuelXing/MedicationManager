@@ -20,7 +20,7 @@ def addAPlan(request):
     elif request.method == 'POST':
         name = request.POST.get('name')
         user_id = request.user.id
-        drug = request.POST.get('drug')
+        drug_name = request.POST.get('drug')
         frequencies = request.POST.get('frequencies')
         dose = request.POST.get('dose')
         startDate = request.POST.get('startDate')
@@ -30,10 +30,12 @@ def addAPlan(request):
             messages.add_message(request, messages.WARNING, "username does not exist")
             return HttpResponseRedirect(reverse('plan:plan_create'))
 
+        user = User.objects.get(pk = user_id)
+        drug = Drug.objects.get(name = drug_name)
 
         newPlan = Plan()
         newPlan.name = name
-        #newPlan.user=User.objects.get(id=user_id)
+        newPlan.user=User.objects.get(id=user_id)
         newPlan.drug=Drug.objects.get(name=drug)
         newPlan.frequencies=frequencies
         newPlan.does=dose
@@ -42,8 +44,6 @@ def addAPlan(request):
         newPlan.save()
         plans = get_list_or_404(Plan, user__pk = request.user.id)
         return render_to_response('Plan/lists.html',locals(), context_instance = RequestContext(request))
-        
-  
 
 
 
@@ -59,7 +59,7 @@ def editAPlan(request, plan_id):
             newPlan = form.save(commit=False)
             newPlan.user = request.user
             newPlan.save()
-            return HttpResponseRedirect(reverse('plan:plan_detail', args=(newPlan.id) ))
+            return HttpResponseRedirect(reverse('plan:plan_detail', args=(newPlan.id), ))
         else:
             return HttpResponseRedirect(reverse('plan:plan_edit'))
 
@@ -81,7 +81,7 @@ def detail(request, plan_id):
 @login_required
 def listPlans(request):
     if request.method == 'GET':
-        plans = get_list_or_404(Plan)
+        userid = request.user.id
+        plans = Plan.objects.filter(user__pk = userid)
         return render_to_response('Plan/lists.html', locals(), context_instance = RequestContext(request))
 
-#, user__pk = request.user.id

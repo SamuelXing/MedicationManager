@@ -5,7 +5,7 @@ from drugModule.models import Drug
 # Create your models here.
 class Plan(models.Model):
     name = models.CharField(max_length=100)
-    user = models.OneToOneField(User,null=True)
+    user = models.ForeignKey(User,null=True)
     drug = models.ForeignKey(Drug)
 
     OneTimePerDay = 'OneTime'
