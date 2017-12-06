@@ -11,6 +11,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.views import password_reset, password_reset_confirm
+from planModule.models import Plan
 
 
 from .models import NormalUser
@@ -68,7 +69,9 @@ def signup(request):
         p.user = user
         p.nickname = user.username
         p.save()
-        return HttpResponseRedirect(reverse('user:signup'))
+        plans = Plan.objects.filter(user__pk=user.id)
+        return render_to_response('Plan/lists.html', locals(), context_instance=RequestContext(request))
+        return HttpResponseRedirect(reverse('plan:plan_list'))
 
 def signin(request):
     if request.method == 'GET':
@@ -87,11 +90,11 @@ def signin(request):
             return HttpResponseRedirect(reverse('user:signin'))
 
         login(request, user)
-        return HttpResponse("Signin succeed")
+        return render_to_response("Medication/homepage.html")
 
 def signout(request):
     logout(request)
-    return HttpResponse("Signout succeed")
+    return render_to_response("Medication/homepage.html")
 
 @login_required
 def settings(request):

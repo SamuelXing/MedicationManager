@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from drugModule.views import show
 
 urlpatterns = [
+    url(r'^$', show),  # homepage
     url(r'^user/', include('UserModule.urls', namespace='user')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^plan/', include('planModule.urls', namespace='plan')),

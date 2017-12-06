@@ -54,3 +54,5 @@ def listDrug(request):
 	drugs=Drug.objects.all()
 	return render_to_response('Medication/drugLists.html',locals(),context_instance = RequestContext(request))
 
+def show(request):
+    return render(request,'Medication/homepage.html')

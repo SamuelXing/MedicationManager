@@ -40,7 +40,6 @@ INSTALLED_APPS = (
     'UserModule',
     'drugModule',
     'planModule',
-
 )
 
 MIDDLEWARE_CLASSES = (

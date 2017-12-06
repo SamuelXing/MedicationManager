@@ -9,6 +9,7 @@ from .planForm import PlanForm
 from django.contrib import messages
 
 
+
 # Create your views here.
 # TODO: response messages
 @login_required
@@ -84,4 +85,5 @@ def listPlans(request):
         userid = request.user.id
         plans = Plan.objects.filter(user__pk = userid)
         return render_to_response('Plan/lists.html', locals(), context_instance = RequestContext(request))
+
 
