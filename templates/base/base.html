@@ -35,12 +35,14 @@
                     <ul class="nav navbar-nav">
                     {% block tab%}
                     <li><a href="{% url 'plan:plan_create' %}">Make a plan</a></li>
-                    <li><a href="#">Search drugs</a></li>
+                    <li><a href="{% url 'drug:drug_list' %}">Drug Lists</a></li>
+                    
                     {% endblock %}
                     </ul>
-                    <form action="/" method="POST" class="navbar-form navbar-left" role="search">
+                    <form action="/drug/detail/" method="POST" class="navbar-form navbar-left" role="search">
+                    {% csrf_token %}
                         <div class="form-group">
-                            <input id = 'drug-input' type="text" name = 'drug' class="form-control" placeholder="search drug">
+                            <input id = 'drug' type="text" name = 'drug' class="form-control" placeholder="search drug">
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>

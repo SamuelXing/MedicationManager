@@ -18,9 +18,7 @@
              <th>
                  interaction
              </th>
-              <th>
-                 Delete
-             </th>
+             
          </tr>
 
         {% for drug in drugs %}
@@ -37,13 +35,7 @@
              <td>
                  {{drug.interaction}}
              </td>
-             <td>
-             <form action="/drug/delete/" method="post">
-             {% csrf_token %}
-                 <input type="hidden" name="drug_id" value="{{drug.id}}"/>
-                 <input type="submit" value="Delete Item" />
-            </form>
-             </td>
+
          </tr>
         {% endfor %}
      </table>
