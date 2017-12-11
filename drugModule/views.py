@@ -56,3 +56,13 @@ def listDrug(request):
 
 def show(request):
     return render(request,'Medication/homepage.html')
+
+
+def detailDrug(request):
+	drug=request.POST.get('drug')
+	matchDrug=[]
+	drugs=Drug.objects.all()
+	for drug_ in drugs:
+		if drug_.name.find(drug) !=-1:
+			matchDrug.append(drug_)
+	return render_to_response('Medication/detail.html',locals(),context_instance = RequestContext(request))
