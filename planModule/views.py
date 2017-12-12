@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from .planForm import PlanForm
 from django.contrib import messages
-
+from django.core.mail import send_mail, BadHeaderError
 
 
 # Create your views here.
@@ -96,5 +96,27 @@ def listPlans(request):
         userid = request.user.id
         plans = Plan.objects.filter(user__pk = userid)
         return render_to_response('Plan/lists.html', locals(), context_instance = RequestContext(request))
+@login_required
+def sendEmail(request):
+    user_id = request.user.id
+    user = User.objects.get(pk = user_id)
+    subject="Drug Plans"
+    to_email=user.email
+    from_email="quanfengdu@gmail.com"
+    plans=Plan.objects.all()
+    message=""
+    for plan in plans:
+        if plan.user==user:
+            message+=plan.name+"          "+plan.drug.name+"          "+plan.frequencies+"          "+plan.dose+"\n"
+    if subject and message and from_email and to_email:
+        try:
+            send_mail(subject,message,from_email,[to_email])
+        except BadHeaderError:
+            return HttpResponseRedirect('Invalid header found')
+    return render(request,'Medication/homepage.html')
+
+
+
+
 
 
