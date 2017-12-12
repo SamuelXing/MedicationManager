@@ -35,6 +35,7 @@
                     <ul class="nav navbar-nav">
                     {% block tab%}
                     <li><a href="{% url 'plan:plan_create' %}">Make a plan</a></li>
+                    <li><a href="{% url 'plan:send_Email' %}">Send Plan</a></li>
                     <li><a href="{% url 'drug:drug_list' %}">Drug Lists</a></li>
                     
                     {% endblock %}
